@@ -23,6 +23,8 @@ class Project extends Model
                 'projects.title',
                 'projects.description',
                 'users.email')
-            ->leftJoin('users', 'users.id', '=', 'projects.user_id')->get();
+            ->leftJoin('users', 'users.id', '=', 'projects.user_id')
+            ->latest('projects.created_at')
+            ->get();
     }
 }
